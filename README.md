@@ -4,14 +4,9 @@ The main objective of PyCT is to produce as a minimum number of different input 
 
 ---
 
-## Abstract
+# DNN Concolic Testing with CNN
 
-Concolic testing is a software testing technique for generating concrete inputs of programs to increase code coverage and has been developed for years. For programming languages such as C, JAVA, x86 binary code, and JavaScript, there are already plenty of available concolic testers. However, the concolic testers for Python are relatively less. Since Python is a popular programming language, we believe there is a strong need to develop a good one.
-
-Among the existing testers for Python, PyExZ3 is the most well-known and advanced. However, we found some issues of PyExZ3: (1) it implements only a limited number of base types’ (e.g., integer, string) member functions and(2) it automatically downcasts concolic objects and discards related symbolic information as it encounters built-in types’ constructors.
-
-Based on the concept of PyExZ3, we develop a new tool called PyCT to alleviate these two issues. PyCT supports a more complete set of member functions of data types including integer, string, and range. We also proposes a new method to upcast constants to concolic ones to prevent unnecessary downcasting. Our evaluation shows that with more member functions being supported, the coverage rate is raised to (80.20%) from (71.55%). It continues to go up to (85.68%) as constant upcasting is also implemented.
-
+This project implements concolic testing on a convolutional neural network (CNN) using SHAP values to analyze and explore critical decision points in neural networks.
 ---
 
 ## Prerequisites
@@ -29,3 +24,39 @@ Based on the concept of PyExZ3, we develop a new tool called PyCT to alleviate t
   1. For CVC4 to be findable by the Python API, `export PYTHONPATH={path-to-CVC4-build-folder}/src/bindings/python` should be put in `~/.bashrc`.
   2. For pipenv to create a virtual environment in each project folder, `export PIPENV_VENV_IN_PROJECT=1` should be put in `~/.bashrc`, too.
 
+
+## Setup Instructions
+
+1. **Calculate SHAP Values:**
+
+   You need to precompute the SHAP values for the first layer of your model. Ensure that these SHAP values are saved in a newly created directory named `shap_value`.
+
+2. **Create the `shap_value` Directory:**
+
+   ```
+   mkdir shap_value
+   ```
+
+   Place the calculated SHAP values for the first layer in this directory.
+
+## Running the Attack
+
+To execute the attack on a CNN model, use the following command:
+
+```bash
+python3 test_dnnct_cnn.py
+```
+
+## Notes
+
+- Ensure that all dependencies are installed and your Python environment is correctly set up.
+- Precomputed SHAP values for the first layer must be present in the `shap_value` directory before running the script, as they are essential for the analysis.
+
+## Troubleshooting
+
+If you encounter any issues, please check the following:
+
+- Ensure the SHAP values are correctly formatted and accessible in the `shap_value` directory.
+- Verify that all necessary Python libraries are installed.
+
+For further assistance, please refer to the project documentation or contact the project maintainers.
