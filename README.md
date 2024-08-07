@@ -1,6 +1,5 @@
 # DNN Concolic Testing with CNN
 
-The main objective of PyCT is to produce as a minimum number of different input arguments to achieve as much coverage of the target function as possible by feeding the produced arguments one in an iteration. The currently supported input arguments can only be integers or strings. Other types of arguments may be supported in the future.
 This project implements concolic testing on a convolutional neural network (CNN) using SHAP values to analyze and explore critical decision points in neural networks.
 
 ## Prerequisites
